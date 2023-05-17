@@ -1,0 +1,33 @@
+# This workflow performs a Software Composition Analysis (SCA) on this repo.
+
+name: Sbom Generation
+
+# Controls when the workflow will run
+# on:
+#   # Triggers the workflow on pull request events but only for the "main" branch
+#   pull_request:
+#     branches:
+#       - master
+
+on:
+  push:
+    branches:
+      - main
+      
+      
+jobs:
+  # This workflow contains a single job called "security-scan"
+  sbom-gen:
+    runs-on: [self-hosted]
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so this job can access it
+      - uses: actions/checkout@v3
+
+      # Runs semgrep on current repository
+      - name: Check for Multiple Lang Vulnerabilities
+        if: always()
+        uses: vrkaushik-akm/SCA_GHA_Trivy@main
+        with:
+          repo_url: "${{ github.event.repository.url }}"
+          repo_name: "${{ github.event.repository.name }}"
