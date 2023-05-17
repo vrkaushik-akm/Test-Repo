@@ -24,8 +24,8 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so this job can access it
       - uses: actions/checkout@v3
 
-      # Runs semgrep on current repository
-      - name: Check for Multiple Lang Vulnerabilities
+      # Generates an sbom for the current repository using Trivy
+      - name: Generating sbom with Trivy
         if: always()
         uses: vrkaushik-akm/SCA_GHA_Trivy@main
         with:
