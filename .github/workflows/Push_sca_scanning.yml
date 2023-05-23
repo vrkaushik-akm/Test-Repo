@@ -16,8 +16,8 @@ on:
       
       
 jobs:
-  # This workflow contains a single job called "security-scan"
-  sbom-gen:
+  # This workflow contains a single job called "sca-scan"
+  sca-scan:
     runs-on: ubuntu-latest
 
     steps:
